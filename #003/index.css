@@ -1,0 +1,92 @@
+html, body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient (
+        -45deg,
+        white 0%,
+        white 25%,
+        #603811 25%,
+        #603811 50%,
+        white 50%,
+        white 75%,
+        #603811 75%,
+        #603811 100% 
+    );
+    background-size: 10%;
+}
+
+
+/* 
+    linear-gradient 函数用于创建一个表示两种或多种颜色线性渐变的图片
+    其结果属于<gradient>数据类型，是一种特别的<image>数据类型
+    渐变轴为45度，从蓝色渐变到红色
+    linear-gradient(45deg, blue, red);
+
+    从右下到左上、从蓝色渐变到红色
+    linear-gradient(to left top, blue, red);
+
+    从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束
+    linear-gradient(0deg, blue, green 40%, red);
+*/
+
+.box .content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.box .content {
+    background-color: white;
+}
+
+.box, .box .content {
+    box-shadow: 0 0 2px #603811,
+                0 0 5px #000001,
+                inset 0 0 5px #000001;
+    border-radius: 10px;
+}
+
+.box .content {
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 30px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+/* flex-direction 属性规定灵活项目的方向, 如果 元素不是弹性盒对象的元素，则无效*/
+
+.box .content h2 {
+    color: #603811;
+}
+
+.box .content p {
+    color: dimgray;
+}
+
+@keyframes animate {
+    from {  
+        background-position: 0;  /*background-position 属性设置背景图像的起始位置, */
+    }
+
+    to {
+        background-position: 10%; 
+    }
+}
+
+.box {
+    animation: animate 2s linear infinite;
+}

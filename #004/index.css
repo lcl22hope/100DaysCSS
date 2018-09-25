@@ -1,0 +1,70 @@
+html, body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: skyblue;
+}
+
+/* 设置按钮的 2d 样式，为了便于调整按钮尺寸，使用了变量： */
+.box {
+    background: linear-gradient(to right, gold, darkOrange);
+    color: white;
+    --width: 250px;
+    --height: calc(var(--width)/3);
+    width: var(--width);
+    height: var(--height);
+    text-align: center; /*text-align 属性规定元素中的文本的水平对齐方式*/
+    line-height: var(--height); /*line-height 属性设置行间的距离（行高） 注释：不允许使用负值。*/
+    font-size: calc(var(--height)/2.5);
+    font-family: sans-serif;
+    letter-spacing: 0.2em;
+    border: 1px solid darkgoldenrod;
+    border-radius: 2em;
+    transform: perspective(500px) rotateY(-15deg);
+    text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 
+    transform 使元素发生 2D 或 3D 转换, 允许对元素进行旋转、缩放、移动或倾斜等
+    rotateY(angle) 定义沿着 Y 轴的 3D 旋转。
+    perspective(n) 为3D转换元素定义透视视图。	
+
+    text-shadow 属性向文本设置阴影
+    text-shadow: h-shadow v-shadow blur color;
+
+    box-shadow 属性向框添加一个或多个阴影
+    box-shadow: h-shadow v-shadow blur spread color inset;
+
+*/
+
+.box:hover {
+    transform: perspective(500px) rotateY(15deg);
+    text-shadow: -6px 3px 2px rgba(0,0,0,0.2);
+    box-shadow: -2px 0 0 5px rgba(0,0,0,0.2);
+}
+
+
+.box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, white, transparent);
+    left: -100%;
+    transition: 0.5s; 
+    /* transition 一定要写单位 不然不会有动画固态 */
+}
+
+.box:hover::before {
+    left: 100%;
+}
+/* 
+    transition 属性是一个简写的属性，用于设置4个过度属性
+    请始终设置 transition-duration 属性，否则时长为 0，就不会产生过渡效果
+    transition: property duration timing-function delay;
+*/
